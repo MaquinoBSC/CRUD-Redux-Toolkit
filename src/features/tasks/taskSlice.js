@@ -20,8 +20,11 @@ export const tasksSlice = createSlice({
     name: 'tasks',
     initialState: initialState,
     reducers: {
-        // Funciones para manipular el estado tasks
+        addTask: (state, action) => {
+            state.push(action.payload);
+        }
     }
 });
 
+export const { addTask } = tasksSlice.actions;
 export default tasksSlice.reducer;

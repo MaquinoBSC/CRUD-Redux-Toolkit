@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTask } from '../features/tasks/taskSlice';
+import { v4 as uuid } from 'uuid';
 
 export default function TasksForm(){
+    const dispatch = useDispatch();
     const [task, setTask] = useState({
         title: '',
         description: '',
@@ -15,6 +19,10 @@ export default function TasksForm(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(addTask({
+            ...task,
+            id: uuid()
+        }));
     }
 
     return (
