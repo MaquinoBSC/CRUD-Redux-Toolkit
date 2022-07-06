@@ -1,14 +1,18 @@
 import './App.css';
-import { useSelector } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TasksForm from './components/TasksForm';
 import TasksList from './components/TasksList';
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
-      <TasksForm />
-      <TasksList />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={ <TasksList /> } />
+          <Route path='/create-task' element={ <TasksForm /> } />          
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
