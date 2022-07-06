@@ -27,9 +27,12 @@ export const tasksSlice = createSlice({
             return state.filter(task => task.id !== action.payload);
             // const taskFound = state.find(task => task.id == action.payload);
             // if(taskFound){ state.splice(state.indexOf(taskFound), 1) }
+        },
+        updateTask: (state, action) => {
+            return state.map(task => task.id === action.payload.id ? action.payload : task);
         }
     }
 });
 
-export const { addTask, deleteTask } = tasksSlice.actions;
+export const { addTask, deleteTask, updateTask } = tasksSlice.actions;
 export default tasksSlice.reducer;
